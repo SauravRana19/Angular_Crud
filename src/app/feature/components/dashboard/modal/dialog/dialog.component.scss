@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  align-items: flex-start;
+  padding: 0 0 2% 12%;
+}
+.headertext{
+  padding: 0 0 6% 35%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.Genstyl {
+  font-weight: 500;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  letter-spacing: normal;
+  padding: 5px 0 10px 0;
+}
+
+.GenErr{
+ padding: 5px 1px 10px 0;
+ font-weight: 600;
+ font-family: Roboto, "Helvetica Neue", sans-serif;
+ font-size: 13px;
+}
+.matchpswd{
+  color: red;
+  padding: 5px 1px 10px 50%;
+  font-weight: 400;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 13px;
+}
+.checkedPrm{
+  padding: 0 0 2% 11.5%;
+}
+
+.example-radio-button {
+  padding: 0 0 10px 0;
+}
+.radiov {
+  padding: 0 0 0 2%;
+}
+
+.closebtn {
+  // background-color: rgb(127, 120, 120);
+  // color: aliceblue;
+  font-size: 20px;
+  float: right;
+  margin: -100px 0 0 0;
+}
+.mat-form-field {
+  margin: 0 0 0 11%;
+}
+.form {
+  padding: 0 0 0 10%;
+}
+.radio {
+  font-size: medium;
+  padding: 0 0 0 8%;
+}
+.radiovalue {
+  padding: 0 0 0 10px;
+}
+.btn {
+  color: aliceblue;
+  background-color: green;
+  margin: 5% 0 0 30%;
+  width: 30%;
+}
+.calender {
+  width: 25%;
+}
+.loader{
+  
+  translate: 400% -500%;
+}

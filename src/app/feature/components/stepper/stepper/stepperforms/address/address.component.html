@@ -1,0 +1,56 @@
+<form [formGroup]="parentform" ngClass="form" (ngSubmit)="register()">
+    <div formGroupName="address">
+    <mat-form-field appearance="outline">
+        <mat-label>City</mat-label>
+        <mat-select formControlName="City">
+            <mat-option value="Chandighar">Chandighar</mat-option>
+            <mat-option value="Mohali">Mohali</mat-option>
+        </mat-select>
+        <mat-error class="alert-danger" *ngIf="
+         address?.invalid &&address.get('address.City')?.hasError('required')
+          ">
+            Required
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label for="last-name">Permanent Address</mat-label>
+        <input matInput id="permanentaddress" type="text" formControlName="PermanentAddress" />
+        <mat-error class="alert-danger" *ngIf="
+        address?.invalid &&
+        address.get('address.PermanentAddress')?.hasError('required')
+          ">
+            Required
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label for="Temporary Address">Temporary Address </mat-label>
+        <input matInput id="temporaryaddress" type="text" formControlName="TemporaryAddress" />
+        <mat-error class="alert-danger" *ngIf="
+            address?.invalid &&
+            address.get('address.TemporaryAddress')?.hasError('required')
+          ">
+            Required
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label for="last-name">Postal code </mat-label>
+        <input matInput id="postalcode" type="number" formControlName="Postalcode" (keypress)="presskey($event)" />
+        <mat-error class="alert-danger" *ngIf="
+            address?.invalid &&
+            address.get('address.Postalcode')?.hasError('required')
+          ">
+            Required
+        </mat-error>
+        <mat-error class="alert-danger" *ngIf="
+            address?.invalid &&
+            address.get('address.Postalcode')?.hasError('pattern')
+          ">
+            Min Or Max 5 Postalcode
+        </mat-error>
+        <mat-error class="alert-danger" *ngIf="address.get('address.Postalcode')?.hasError('Matched')">
+            Password Not Matched
+        </mat-error>
+    </mat-form-field>
+    <!-- <button (click)="save()">Submit</button> -->
+</div>
+</form>

@@ -1,0 +1,75 @@
+<mat-grid-list cols="2" >
+    <form [formGroup]="parentform" ngClass="form" (ngSubmit)="register()">
+      <div formGroupName="userinfo">
+        <mat-form-field appearance="outline">
+            <mat-label for="first-name">First Name </mat-label>
+            <input matInput id="Firstname" formControlName="FirstName" />
+            <mat-error class="alert-danger"
+                *ngIf=" userinfo?.invalid && userinfo.get('userinfo.FirstName')?.hasError('required')">
+                Required
+            </mat-error>
+            <mat-error class="alert-danger"
+                *ngIf=" userinfo?.invalid && userinfo.get('userinfo.FirstName')?.hasError('pattern')">
+                First Name Invalid
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label for="last-name">Last Name </mat-label>
+            <input matInput id="lastname" type="text" formControlName="LastName" />
+            <mat-error class="alert-danger" *ngIf="
+            userinfo?.invalid &&
+            userinfo.get('userinfo.LastName')?.hasError('required')
+          ">
+                Required
+            </mat-error>
+            <mat-error class="alert-danger" *ngIf="
+            userinfo?.invalid &&
+            userinfo.get('userinfo.LastName')?.hasError('pattern')
+          ">
+                Last Name Invalid
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" ngClass="calender">
+            <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+            <mat-label> Date of Birth</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker"
+              [min]="minDate"
+              [max]="maxDate"
+              formControlName="Date"
+            />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error
+              class="alert-danger"
+              *ngIf="
+                userinfo?.invalid && userinfo.get('userinfo.Date')?.hasError('required')
+              "
+            >
+              Required
+            </mat-error>
+            <mat-error *ngIf="userinfo.get('userinfo.Date')?.hasError('invalidDOBYear')">
+              Select year greater than 2000.
+            </mat-error>
+            <mat-error *ngIf="userinfo.get('userinfo.Date')?.hasError('MaximumAge')">
+              Age is greater than 50
+            </mat-error>
+            <mat-error *ngIf="userinfo.get('userinfo.Date')?.hasError('MinimumAge')">
+              Age is Smaller than 18 or equal
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Select</mat-label>
+            <mat-select formControlName="Gender">
+              <mat-option value="Male">Male</mat-option>
+              <mat-option value="Female">Female</mat-option>
+              <mat-option value="Other">Other</mat-option>
+            </mat-select>
+            <mat-error class="alert-danger" *ngIf="userinfo?.invalid && userinfo.get('userinfo.Gender')?.hasError('required')" >
+        Required
+      </mat-error>
+          </mat-form-field>
+        </div>
+    </form>
+</mat-grid-list>
