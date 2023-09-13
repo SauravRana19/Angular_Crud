@@ -1,0 +1,28 @@
+
+.example-card {
+  margin-bottom: 8px;
+  border-radius: 10px;
+  width: 80%;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.container {
+  padding: 24px;
+}
+.responsive-grid {
+  display: grid;
+  overflow: hidden;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.example-full-width {
+  width: 30%;
+}
+.backbtn{
+  float: right;
+  color: white;
+  background-color: green;
+}
+::ng-deep.highlighted-text{
+  font-weight: bolder;
+}

@@ -1,0 +1,26 @@
+<button mat-raised-button (click)="back()"  ngClass="backbtn" color="primary">Back</button>
+<mat-form-field class="example-full-width">
+  <mat-label>Search</mat-label>
+  <input matInput [(ngModel)]="searchinput" (keyup)="search()">
+  <button *ngIf="searchinput" matSuffix mat-icon-button aria-label="Clear" (click)="clear()">
+    <mat-icon>close</mat-icon>
+  </button>
+
+</mat-form-field>
+<div class="container responsive-grid">
+  <mat-card *ngFor="let item of dataSource; let i=index;"  class="example-card">
+    <mat-card-title  [innerHtml]="item.Title | highlighter:searchinput">
+      <!-- {{item.Title |  highlighter:searchinput:'full'}} -->
+    </mat-card-title>
+    <mat-card-subtitle>{{item.Released}}</mat-card-subtitle>
+    <mat-card-content>
+      <p>{{item.Director}}</p>
+      <p>{{item.Country}}</p>
+      <img mat-card-image [src]="item.Images">
+    </mat-card-content>
+    <mat-card-actions>
+      <button  mat-raised-button color="primary" (click)="cartdetails(item.id)">View Details</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+<mat-card *ngIf="!dataSource.length">Movie not Found....</mat-card>

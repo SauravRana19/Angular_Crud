@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="screen">
+        <div class="screen__content">
+            <form class="login" name="form" #loginform="ngForm" (ngSubmit)=" login(loginform.value)">
+                
+                <div class="login__field">
+                    <input type="text" id="email" name="email" class="login__input" placeholder="User name/Email"
+                        ngModel (keypress)="valuecheck($event)" #email="ngModel" required minlength=5 maxlength=30
+                        pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$">
+                </div>
+                <span class="redCL">{{inputvalue}}</span>
+                <div *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+                    <!-- <span class="redCL">{{email?.valid?'Email is required':''}}</span> -->
+                    <div *ngIf="email.errors?.['required'] ">
+                        <span class="redCL">Email is required</span>
+                    </div>
+                    <div *ngIf="email.errors?.['minlength']">
+                        <span class="redCL">Minimum Length is {{email.errors?.['minlength'].requiredLength}}</span>
+                    </div>
+                    <div class="redCL" *ngIf="email.errors?.['pattern']">
+                        Invalid Email
+                    </div>
+                   
+                </div>
+
+                <div class="login__field">
+                    <input [type]="Phide ? 'password' : 'text'" name="password" class="login__input" placeholder="Password" ngModel
+                        (keypress)="valuecheck($event)" #password="ngModel" required minlength="8" maxlength="16"
+                        pattern="^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$">
+                    <button mat-icon-button  (click)="Phide = !Phide" 
+                        [attr.aria-pressed]="Phide">
+                        <mat-icon>{{Phide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </div>
+                <span class="redCL">{{inputvalue}}</span>
+                <div *ngIf="!password?.valid && (password?.dirty || password?.touched )">
+                    <div *ngIf="password.errors?.['required'] ">
+                        <span class="redCL">password is required</span>
+
+                    </div>
+                    <div *ngIf="password.errors?.['minlength']">
+                        <span class="redCL">Minimum Length is {{password.errors?.['minlength'].requiredLength}}</span>
+                    </div>
+                    <div class="redCL" *ngIf="password.errors?.['pattern']">
+                        Invalid Password ! Required one Alphabet and one number
+                    </div>
+                </div>
+
+                <div>
+                    <br>
+                    <input type="checkbox" name="checkbox" ngModel> remember me
+                </div>
+                <button class="button login__submit" type="submit" [disabled]="!loginform.valid">
+                    <span (click)="valuecheck($event)">Log In</span>
+                </button>
+            </form>
+        </div>
+        <div class="screen__background">
+            <span class="screen__background__shape screen__background__shape4"></span>
+            <span class="screen__background__shape screen__background__shape3"></span>
+            <span class="screen__background__shape screen__background__shape2"></span>
+            <span class="screen__background__shape screen__background__shape1"></span>
+        </div>
+    </div>
+</div>

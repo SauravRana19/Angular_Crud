@@ -1,0 +1,38 @@
+<button mat-button ngClass="closebtn" (click)="this.dialogRef.close()">
+    X
+</button>
+<form [formGroup]="studentform" (ngSubmit)="submitForm()">
+    <mat-stepper [linear]="true" #stepper>
+        <mat-step [stepControl]="studentform.controls.userinfo">
+            <!-- <form [formGroup]="userinfo"> -->
+            <ng-template matStepLabel>Student Basic Details</ng-template>
+            <app-userinfo [form]="studentform" ></app-userinfo>
+            <!-- </form> -->
+            <div>
+                <button mat-flat-button matStepperNext ngClass="nextbtn" >Next</button>
+            </div>
+        </mat-step>
+        <mat-step [stepControl]="studentform.controls.basicinfo">
+            <!-- <form [formGroup]="basicinfo"> -->
+            <ng-template matStepLabel>Student Online Details</ng-template>
+            <app-basicinfo [form]="studentform"></app-basicinfo>
+            <!-- </form> -->
+            <div>
+                <button mat-flat-button matStepperPrevious ngClass="backbtn">Back</button>
+                <button mat-flat-button matStepperNext ngClass="nextbtn">Next</button>
+            </div>
+        </mat-step>
+        <mat-step [stepControl]="studentform.controls.address">
+            <!-- <form [formGroup]="address"> -->
+            <ng-template matStepLabel>Student Address</ng-template>
+            <app-address [form]="studentform"></app-address>
+            <!-- </form> -->
+            <div>
+                <button mat-button matStepperPrevious ngClass="backbtn">Back</button>
+                <button mat-button matStepperNext ngClass="nextbtn" type="submit">Submit</button>
+            </div>
+        </mat-step>
+    </mat-stepper>
+    <!-- <button type="submit">Submit</button> -->
+</form>
+{{studentform}}
