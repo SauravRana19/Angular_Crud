@@ -80,7 +80,7 @@ export class DashboardComponent implements OnInit {
   @ViewChild(MatPaginator) paginator:any= MatPaginator;
 
   ngAfterViewInit() {
-    console.log("paginator",this.paginator)
+    // console.log("paginator",this.paginator)
     this.dataSource.paginator = this.paginator;
   }
   getUsers(): void {
@@ -90,7 +90,7 @@ export class DashboardComponent implements OnInit {
         this.loading = false;
         return data;
       });
-      console.log(this.dataSource);
+      // console.log(this.dataSource);
     });
   }
 

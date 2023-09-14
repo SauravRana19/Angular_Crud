@@ -20,32 +20,20 @@ export class ApiService {
   constructor(public http: HttpClient) {}
 
   getUsers(): Observable<string[]> {
-    return this.http.get<any[]>(this.usersUrl).pipe(
-      catchError((error) => {
-        return throwError(() => console.log(error.error));
-      })
-    );
+    return this.http.get<any[]>(this.usersUrl)
+ 
   }
   addUser(data: any): Observable<any[]> {
-    return this.http.post<any[]>(this.usersUrl, data).pipe(
-      catchError((error) => {
-        return throwError(() => console.log(error.error));
-      })
-    );
+    return this.http.post<any[]>(this.usersUrl, data)
+
   }
   deleteUser(id: number): Observable<any[]> {
-    return this.http.delete<any[]>(this.usersUrl + '/' + id).pipe(
-      catchError((error) => {
-        return throwError(() => console.log(error.error));
-      })
-    );
+    return this.http.delete<any[]>(this.usersUrl + '/' + id)
+ 
   }
   updateUser(data: any): Observable<any[]> {
-    return this.http.put<any[]>(this.usersUrl + '/' + data.id, data).pipe(
-      catchError((error) => {
-        return throwError(() => console.log(error.error));
-      })
-    );
+    return this.http.put<any[]>(this.usersUrl + '/' + data.id, data)
+
   }
   searchUser(eventdata: any, value: any) {
     // console.log('data', eventdata, value);

@@ -11,6 +11,7 @@ export class BasicinfoComponent implements OnInit {
   // form!: FormGroup;
   @Input('form') parentform:any 
   basicinfo!: FormGroup;
+  Phide: boolean = true;
 
   constructor(private fb: FormBuilder,
     private controlContainer:ControlContainer) { 

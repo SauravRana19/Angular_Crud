@@ -9,7 +9,7 @@
             <app-userinfo [form]="studentform" ></app-userinfo>
             <!-- </form> -->
             <div>
-                <button mat-flat-button matStepperNext ngClass="nextbtn" >Next</button>
+                <button mat-flat-button matStepperNext  type="button" [disabled]="studentform.controls.userinfo.invalid" ngClass="nextbtn" >Next</button>
             </div>
         </mat-step>
         <mat-step [stepControl]="studentform.controls.basicinfo">
@@ -19,7 +19,7 @@
             <!-- </form> -->
             <div>
                 <button mat-flat-button matStepperPrevious ngClass="backbtn">Back</button>
-                <button mat-flat-button matStepperNext ngClass="nextbtn">Next</button>
+                <button mat-flat-button matStepperNext  type="button" [disabled]="studentform.controls.basicinfo.invalid" ngClass="nextbtn">Next</button>
             </div>
         </mat-step>
         <mat-step [stepControl]="studentform.controls.address">
@@ -28,10 +28,9 @@
             <app-address [form]="studentform"></app-address>
             <!-- </form> -->
             <div>
-                <button mat-button matStepperPrevious ngClass="backbtn">Back</button>
-                <button mat-button matStepperNext ngClass="nextbtn" type="submit">Submit</button>
+                <button mat-flat-button matStepperPrevious ngClass="backbtn">Back</button>
+                <button mat-flat-button  matStepperNext  type="submit" [disabled]="studentform.controls.address.invalid" ngClass="nextbtn">Submit</button>
             </div>
         </mat-step>
     </mat-stepper>
-    <!-- <button type="submit">Submit</button> -->
 </form>
