@@ -3,10 +3,10 @@ import {
   FormBuilder,
   FormGroup,
   ControlContainer,
-  Validators,
+  // Validators,
 } from '@angular/forms';
-import { datePickerValidator } from 'src/app/feature/components/dashboard/modal/dialog/validations/datepickervalidator';
-import { regex } from 'src/app/shared/service/RegularExpressions/regex';
+// import { datePickerValidator } from 'src/app/feature/components/dashboard/modal/dialog/validations/datepickervalidator';
+// import { regex } from 'src/app/shared/service/RegularExpressions/regex';
 
 @Component({
   selector: 'app-userinfo',

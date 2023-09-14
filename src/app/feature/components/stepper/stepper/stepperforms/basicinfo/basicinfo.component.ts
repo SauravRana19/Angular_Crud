@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup,ControlContainer, Validators} from '@angular/forms';
-import { regex } from 'src/app/shared/service/RegularExpressions/regex';
+// import { regex } from 'src/app/shared/service/RegularExpressions/regex';
 
 @Component({
   selector: 'app-basicinfo',

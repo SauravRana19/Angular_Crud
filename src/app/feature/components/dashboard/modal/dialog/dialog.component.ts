@@ -3,8 +3,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Validators, FormBuilder } from '@angular/forms';
 import { datePickerValidator } from './validations/datepickervalidator';
 import { passwordvalidaator } from './validations/passwordvalidaator';
-import { ApiService } from '../../../services/api.service';
 import { regex } from 'src/app/shared/service/RegularExpressions/regex';
+import { ApiService } from 'src/app/core/services/apiservice/api.service';
 
 
 @Component({

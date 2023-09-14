@@ -17,7 +17,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { ApiService } from './components/services/api.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
 import { SearchPipe } from './components/pipe/search/search.pipe';
@@ -31,6 +30,7 @@ import { StepperComponent } from './components/stepper/stepper/stepper.component
 import { AddressComponent } from './components/stepper/stepper/stepperforms/address/address.component';
 import { UserinfoComponent } from './components/stepper/stepper/stepperforms/userinfo/userinfo.component';
 import { BasicinfoComponent } from './components/stepper/stepper/stepperforms/basicinfo/basicinfo.component';
+import { ApiService } from '../core/services/apiservice/api.service';
 
 @NgModule({
   declarations: [

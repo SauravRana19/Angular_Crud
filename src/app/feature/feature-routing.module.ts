@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent} from './components/dashboard/dashboard.component'
-import { AuthGuard } from '../core/guard/auth.guard';
 import { CartsComponent } from './components/carts/carts.component';
 import { CartsdetailsComponent } from './components/carts/components/cartsdetails/cartsdetails.component';
+import { AuthGuard } from '../core/guard/authguard/auth.guard';
 
 const routes: Routes = [
   {
