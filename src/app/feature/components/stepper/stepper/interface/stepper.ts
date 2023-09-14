@@ -1,13 +1,13 @@
 export interface stepper {
-    FirstName: string;
-    LastName: string;
-    Email: string;
-    Password: string;
-    TemporaryAddress: string;
-    PermanentAddress: string;
-    City: string;
-    Gender: string;
-    // ConfirmPassword: string;
-    Postalcode: number;
-    Date?: Date;
+    FirstName: any;
+    LastName: any;
+    Email: any;
+    Password: any;
+    TemporaryAddress: any;
+    PermanentAddress: any;
+    City: any;
+    Gender: any;
+    ConfirmPassword: any;
+    Postalcode: any;
+    Date: any;
   }

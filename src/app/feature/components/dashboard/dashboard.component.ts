@@ -9,12 +9,12 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { Router } from '@angular/router';
 import { DialogComponent } from './modal/dialog/dialog.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { ApiService } from '../services/api.service';
 import { constants } from 'src/app/core/utils/const';
 // import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { StepperComponent } from '../stepper/stepper/stepper.component';
+import { ApiService } from 'src/app/core/services/apiservice/api.service';
 
 export interface Users {
   id: number;
@@ -80,7 +80,7 @@ export class DashboardComponent implements OnInit {
   @ViewChild(MatPaginator) paginator:any= MatPaginator;
 
   ngAfterViewInit() {
-    console.log("paginator",this.paginator)
+    // console.log("paginator",this.paginator)
     this.dataSource.paginator = this.paginator;
   }
   getUsers(): void {
@@ -90,7 +90,7 @@ export class DashboardComponent implements OnInit {
         this.loading = false;
         return data;
       });
-      console.log(this.dataSource);
+      // console.log(this.dataSource);
     });
   }
 

@@ -1,14 +1,19 @@
-.backbtn{
-background-color: blue;
-color: whitesmoke;
-float: left;
+.backbtn {
+  background-color: blue;
+  color: whitesmoke;
+  float: left;
 }
-.nextbtn{
-    background-color: green;
+.nextbtn {
+  background-color: green;
+  color: whitesmoke;
+  float: right;
+}
+.sbmtbtn{
+    float: right;
     color: whitesmoke;
-    float: right;
+    background-color: green; 
 }
-.closebtn{
-    font-size: 20px;
-    float: right;
-  }
+.closebtn {
+  font-size: 20px;
+  float: right;
+}

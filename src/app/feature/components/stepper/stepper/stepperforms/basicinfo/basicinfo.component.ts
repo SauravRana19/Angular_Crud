@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup,ControlContainer, Validators} from '@angular/forms';
-import { regex } from 'src/app/shared/service/RegularExpressions/regex';
+// import { regex } from 'src/app/shared/service/RegularExpressions/regex';
 
 @Component({
   selector: 'app-basicinfo',
@@ -11,6 +11,7 @@ export class BasicinfoComponent implements OnInit {
   // form!: FormGroup;
   @Input('form') parentform:any 
   basicinfo!: FormGroup;
+  Phide: boolean = true;
 
   constructor(private fb: FormBuilder,
     private controlContainer:ControlContainer) { 

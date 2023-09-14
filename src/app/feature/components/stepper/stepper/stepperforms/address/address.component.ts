@@ -31,6 +31,6 @@ export class AddressComponent implements OnInit {
   // });
   }
   save(){
-    // console.log(this.parentform)
+    console.log(this.parentform)
   }
 }

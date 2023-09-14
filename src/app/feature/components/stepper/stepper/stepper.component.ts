@@ -1,10 +1,10 @@
 import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-// import { stepper } from './interface/stepper';
-import { ApiService } from '../../services/api.service';
+import { stepper } from './interface/stepper';
 import { MatDialogRef } from '@angular/material/dialog';
 import { regex } from 'src/app/shared/service/RegularExpressions/regex';
 import { datePickerValidator } from '../../dashboard/modal/dialog/validations/datepickervalidator';
+import { ApiService } from 'src/app/core/services/apiservice/api.service';
 
 @Component({
   selector: 'app-stepper',
@@ -40,21 +40,43 @@ export class StepperComponent implements OnInit {
     Postalcode: [ '', [Validators.required,  Validators.minLength(5),  Validators.pattern(regex.postcode),],],
 })
   })
-
+  studentdata:stepper[] = []
 
   ngOnInit(): void {
 
   }
-
   submitForm(){
-    console.log("data",this.studentform.value);
-    // this.apiservice.addUser(this.studentdata).subscribe((res: any) => {
-    //   if (res) {
-    //     this.dialogRef.close()
-    //     this.cdr.detectChanges();
-    //     return console.log(res);
-    //   }
-    //   return;
-    // });
+    // console.log("data",this.studentform.value);
+    const data:any = this.studentform.value
+    let studentdata = {}
+    for (const key in data ) 
+      studentdata = {...studentdata,...data[key]}
+   
+      console.log("studentdata.....",studentdata)
+
+        // this.studentdata = {
+        // FirstName: this.studentform.value.userinfo?.FirstName,
+        // LastName: this.studentform.value.userinfo?.LastName,
+        // Date: this.studentform.value.userinfo?.Date,
+        // Gender: this.studentform.value.userinfo?.Gender,
+        // Email: this.studentform.value.basicinfo?.Email,
+        // Password: this.studentform.value.basicinfo?.Password,
+        // ConfirmPassword: this.studentform.value.basicinfo?.Password,
+        // TemporaryAddress: this.studentform.value.address?.TemporaryAddress,
+        // PermanentAddress: this.studentform.value.address?.PermanentAddress,
+        // City: this.studentform.value.address?.City,
+        // Postalcode: this.studentform.value.address?.Postalcode,
+        // }
+        
+        // console.log("studentdata",this.studentdata)
+
+    this.apiservice.addUser(studentdata).subscribe((res: any) => {
+      if (res) {
+        this.dialogRef.close()
+        this.cdr.detectChanges();
+        return console.log(res);
+      }
+      return;
+    });
   }
 }
