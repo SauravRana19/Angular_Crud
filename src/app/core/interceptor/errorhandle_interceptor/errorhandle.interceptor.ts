@@ -7,17 +7,20 @@ import {
   HttpErrorResponse
 } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable()
 export class ErrorhandleInterceptor implements HttpInterceptor {
 
-  constructor() {}
+  constructor( private toaster: ToastrService,) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    // console.log("Errorhandle",request)
     return next.handle(request).pipe(
       catchError((error) => {
-        return throwError(() => console.log("error",error.statusText));
+        this.toaster.error(error.statusText,error.status,{
+          progressBar:true
+        });
+        return throwError(() => new Error(error.statusText));
       })
     )
   }

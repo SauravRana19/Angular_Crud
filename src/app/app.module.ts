@@ -9,7 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ErrorhandleInterceptor } from './core/interceptor/errorhandle_interceptor/errorhandle.interceptor';
 import { RequestInterceptor } from './core/interceptor/request_interceptor/request.interceptor';
 import { ResponseInterceptor } from './core/interceptor/response_interceptor/response.interceptor';
-
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -23,6 +23,7 @@ import { ResponseInterceptor } from './core/interceptor/response_interceptor/res
     FormsModule,
     BrowserAnimationsModule,
     MatIconModule,
+    ToastrModule.forRoot(),
   ],
   providers: [
    {
