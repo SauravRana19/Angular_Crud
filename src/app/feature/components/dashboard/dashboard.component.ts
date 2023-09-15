@@ -5,7 +5,6 @@ import {
   ChangeDetectorRef,
   ViewChild,
 } from '@angular/core';
-import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { Router } from '@angular/router';
 import { DialogComponent } from './modal/dialog/dialog.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
@@ -55,7 +54,7 @@ export class DashboardComponent implements OnInit {
 
   // loading = this.apiservice.loader
   // isLoading: Subject<boolean> = this.loader.isLoading;
-  loading = false
+
 
   searchinput: string = '';
   employee: Users[] = [];
@@ -100,11 +99,11 @@ export class DashboardComponent implements OnInit {
   }
 
   deletUser(id: number) {
-    this.loading = true;
+   
     this.apiservice.deleteUser(id).subscribe((res: any) => {
       this.getUsers();
       this.cdr.detectChanges();
-      this.loading = false;
+
       return console.log(res);
     });
   }
@@ -119,7 +118,7 @@ export class DashboardComponent implements OnInit {
         disableClose: true,
       });
       this.Dialog.afterClosed().subscribe((result) => {
-        this.loading = true;
+    
         this.getUsers();
         this.cdr.detectChanges();
       });
@@ -132,7 +131,7 @@ export class DashboardComponent implements OnInit {
         disableClose: true,
       });
       this.Dialog.afterClosed().subscribe((result) => {
-        this.loading = true;
+   
         this.getUsers();
         this.cdr.detectChanges();
       });
@@ -171,9 +170,8 @@ export class DashboardComponent implements OnInit {
       this.cdr.detectChanges();
     });
   }
-
   ngOnInit(): void {
     this.getUsers();
-    console.log(this.loader.showLoader)
+
   }
 }

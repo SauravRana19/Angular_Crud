@@ -5,8 +5,8 @@
 
   <button mat-raised-button color="success">
     <a routerLink="carts" ngClass="navlink">Carts</a>
-  </button>
- &nbsp;&nbsp;
+  </button> 
+  &nbsp;&nbsp;
   <button mat-raised-button color="success" (click)="addstudent()">Add Student</button>
 
   <!-- <button mat-raised-button color="success">
@@ -125,7 +125,7 @@
 </table>
 <mat-paginator [pageSizeOptions]="[5, 10, 25]" aria-label="Select page of users"></mat-paginator>
 
-<mat-card-content>
-  <mat-spinner color="warn" ngClass="spinner" mode="indeterminate" *ngIf="loader.showLoader">,
-    ></mat-spinner>
-</mat-card-content>
+<mat-spinner color="warn" ngClass="spinner" mode="indeterminate" *ngIf="loader.showLoader">,
+  ></mat-spinner>
+
+

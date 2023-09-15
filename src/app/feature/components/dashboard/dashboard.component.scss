@@ -1,3 +1,4 @@
+
 .example-spacer {
   flex: 1 1 auto;
 }
@@ -8,7 +9,9 @@ table {
   width: 100%;
 }
 .spinner{
-  translate: 900% 
+  translate: (700% -100%) ;
+  z-index: 1;
+
 }
 .navlink{
   color: rgba(0,0,0,.87);
