@@ -1,11 +1,12 @@
 <mat-toolbar ngClass="toolbar" color="primary">
   <span>Dashboard</span>
   &nbsp;&nbsp;
+  <span class="example-spacer"></span>
+
   <button mat-raised-button color="success">
     <a routerLink="carts" ngClass="navlink">Carts</a>
   </button>
-  <span class="example-spacer"></span>
-
+ &nbsp;&nbsp;
   <button mat-raised-button color="success" (click)="addstudent()">Add Student</button>
 
   <!-- <button mat-raised-button color="success">
@@ -125,6 +126,6 @@
 <mat-paginator [pageSizeOptions]="[5, 10, 25]" aria-label="Select page of users"></mat-paginator>
 
 <mat-card-content>
-  <mat-spinner color="warn" ngClass="spinner" mode="indeterminate" *ngIf="loading">,
+  <mat-spinner color="warn" ngClass="spinner" mode="indeterminate" *ngIf="loader.showLoader">,
     ></mat-spinner>
 </mat-card-content>

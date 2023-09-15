@@ -15,7 +15,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { StepperComponent } from '../stepper/stepper/stepper.component';
 import { ApiService } from 'src/app/core/services/apiservice/api.service';
-
+import { LoaderService } from 'src/app/core/services/loderservice/loader.service';
 export interface Users {
   id: number;
   FirstName: string;
@@ -45,14 +45,18 @@ export class DashboardComponent implements OnInit {
   constructor(
     private _router: Router,
     public dialogModel: MatDialog,
-    private apiservice: ApiService,
+    public apiservice: ApiService,
+    public loader:LoaderService,
     public cdr: ChangeDetectorRef,
     // private _liveAnnouncer: LiveAnnouncer,
   ) {}
   // @ViewChild(MatSort) sort!: MatSort;
 
 
-  loading: boolean = true;
+  // loading = this.apiservice.loader
+  // isLoading: Subject<boolean> = this.loader.isLoading;
+  loading = false
+
   searchinput: string = '';
   employee: Users[] = [];
 
@@ -80,14 +84,15 @@ export class DashboardComponent implements OnInit {
   @ViewChild(MatPaginator) paginator:any= MatPaginator;
 
   ngAfterViewInit() {
-    // console.log("paginator",this.paginator)
     this.dataSource.paginator = this.paginator;
+    
   }
   getUsers(): void {
     this.apiservice.getUsers().subscribe((res: any) => {
       this.dataSource.data = res.map((data: any) => {
         this.cdr.detectChanges();
-        this.loading = false;
+        // this.loading = this.apiservice.hideloader()
+        // console.log("service",this.apiservice.hideloader())
         return data;
       });
       // console.log(this.dataSource);
@@ -152,9 +157,10 @@ export class DashboardComponent implements OnInit {
     }
   }
   addstudent(){
+    // this.apiservice.hideloader()
     this.studentdialog = this.dialogModel.open(StepperComponent, {
       height: '60%',
-      width: '60%',
+      width: '70',
       enterAnimationDuration: '500ms',
       exitAnimationDuration: '200ms',
       disableClose: true,
@@ -168,6 +174,6 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUsers();
-
+    console.log(this.loader.showLoader)
   }
 }
