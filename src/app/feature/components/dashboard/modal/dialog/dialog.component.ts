@@ -66,8 +66,8 @@ export class DialogComponent implements OnInit {
         passwordvalidaator(),
       ],
     ],
-    TemporaryAddress: ['', [Validators.required]],
     PermanentAddress: ['', [Validators.required]],
+    TemporaryAddress: ['', [Validators.required]],
     Postalcode: [
       '',
       [

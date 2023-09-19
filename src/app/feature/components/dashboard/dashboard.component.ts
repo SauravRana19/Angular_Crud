@@ -15,6 +15,12 @@ import { MatPaginator } from '@angular/material/paginator';
 import { StepperComponent } from '../stepper/stepper/stepper.component';
 import { ApiService } from 'src/app/core/services/apiservice/api.service';
 import { LoaderService } from 'src/app/core/services/loderservice/loader.service';
+import { CsvService } from 'src/app/core/services/csvservice/csv.service';
+import { PdfService } from 'src/app/core/services/pdfservice/pdf.service';
+// import { jsPDF } from 'jspdf';
+// import autoTable from 'jspdf-autotable'
+
+
 export interface Users {
   id: number;
   FirstName: string;
@@ -47,6 +53,8 @@ export class DashboardComponent implements OnInit {
     public apiservice: ApiService,
     public loader:LoaderService,
     public cdr: ChangeDetectorRef,
+    private csvservice:CsvService,
+    private pdfservice:PdfService,
     // private _liveAnnouncer: LiveAnnouncer,
   ) {}
   // @ViewChild(MatSort) sort!: MatSort;
@@ -74,17 +82,21 @@ export class DashboardComponent implements OnInit {
     'TemporaryAddress',
     'actions',
     'delete',
+    'downloadcsv',
+    'downloadpdf',
     // 'disclaimer'
   ];
  
 
   dataSource = new MatTableDataSource(this.employee);
   
-  @ViewChild(MatPaginator) paginator:any= MatPaginator;
+  @ViewChild(MatPaginator, { static: true }) paginator:any= MatPaginator;
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
-    
+    const elm  = document.createElement('div');
+    console.log("data",this.dataSource.data)
+    console.log("elm",elm)
   }
   getUsers(): void {
     this.apiservice.getUsers().subscribe((res: any) => {
@@ -170,8 +182,44 @@ export class DashboardComponent implements OnInit {
       this.cdr.detectChanges();
     });
   }
+  downloadcsv(data:any){
+    // console.log(this.dataSource.data)
+    // console.log("data",data)
+
+    // this.pdfservice.pdfconvert(data)
+    this.csvservice.downloadFile(data ,'download')   
+  }
+  downloadpdf(data:any){
+    console.log(data)
+     this.pdfservice.pdfconvert(data)
+  //   let table:any = document.createElement('table')
+  //   let thead = '<thead>';
+  //   Object.keys(data[0]).forEach(th => {
+  //      thead += `<th>${th}</th>`
+  //   })
+  //  thead += "<tbody></tbody>"
+  //  table.innerHTML = thead;
+  //  console.log(table)
+  //  document.querySelector('#tabledata')!.innerHTML = table
+
+  //  let doc = new jsPDF()
+
+  //  doc.html(table, {
+  //   callback: function (doc) {
+  //     doc.save('Document.pdf');
+  //   },
+  //   margin: [0, 60, 60, 0],
+  //   x: 0,
+  //   y: 0,
+  //   width: 100,
+  //   windowWidth: 500 
+  // });
+   
+  }
+
+
   ngOnInit(): void {
     this.getUsers();
-
+    
   }
 }
