@@ -23,7 +23,6 @@ export class RequestInterceptor implements HttpInterceptor {
     //   this.toaster.success('Message Success!', 'Title Success!');
     // }
     this.loader.show();
-
     return next.handle(request).pipe(
       delay(1000),
       finalize(()=> this.loader.hide())

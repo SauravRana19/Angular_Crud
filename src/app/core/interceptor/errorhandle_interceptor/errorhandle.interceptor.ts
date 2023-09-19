@@ -18,7 +18,8 @@ export class ErrorhandleInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((error) => {
         this.toaster.error(error.statusText,error.status,{
-          progressBar:true
+          positionClass:'toast-bottom-right',
+          progressBar:true,
         });
         return throwError(() => new Error(error.statusText));
       })
