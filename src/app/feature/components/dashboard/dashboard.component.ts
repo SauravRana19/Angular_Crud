@@ -202,7 +202,7 @@ export class DashboardComponent implements OnInit {
   //  console.log(table)
   //  document.querySelector('#tabledata')!.innerHTML = table
 
-  //  let doc = new jsPDF()
+
 
   //  doc.html(table, {
   //   callback: function (doc) {
