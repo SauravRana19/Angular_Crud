@@ -54,7 +54,7 @@ export class DashboardComponent implements OnInit {
     public loader:LoaderService,
     public cdr: ChangeDetectorRef,
     private csvservice:CsvService,
-    private pdfservice:PdfService,
+    public pdfservice:PdfService,
     // private _liveAnnouncer: LiveAnnouncer,
   ) {}
   // @ViewChild(MatSort) sort!: MatSort;
@@ -94,20 +94,16 @@ export class DashboardComponent implements OnInit {
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
-    const elm  = document.createElement('div');
-    console.log("data",this.dataSource.data)
-    console.log("elm",elm)
+    // const elm  = document.createElement('div');
+    // console.log("data",this.dataSource.data)
+    // console.log("elm",elm)
   }
   getUsers(): void {
-    this.apiservice.getUsers().subscribe((res: any) => {
-      this.dataSource.data = res.map((data: any) => {
-        this.cdr.detectChanges();
-        // this.loading = this.apiservice.hideloader()
-        // console.log("service",this.apiservice.hideloader())
-        return data;
-      });
-      // console.log(this.dataSource);
-    });
+    this.apiservice.getUsers();
+    this.apiservice.data.subscribe((res)=>{
+      this.dataSource.data = res
+      console.log(res)
+    })
   }
 
   deletUser(id: number) {
@@ -132,7 +128,7 @@ export class DashboardComponent implements OnInit {
       this.Dialog.afterClosed().subscribe((result) => {
     
         this.getUsers();
-        this.cdr.detectChanges();
+        // this.cdr.detectChanges();
       });
     } else {
       this.Dialog = this.dialogModel.open(DialogComponent, {
@@ -145,7 +141,7 @@ export class DashboardComponent implements OnInit {
       this.Dialog.afterClosed().subscribe((result) => {
    
         this.getUsers();
-        this.cdr.detectChanges();
+        // this.cdr.detectChanges();
       });
     }
   }
@@ -192,29 +188,9 @@ export class DashboardComponent implements OnInit {
   downloadpdf(data:any){
     console.log(data)
      this.pdfservice.pdfconvert(data)
-  //   let table:any = document.createElement('table')
-  //   let thead = '<thead>';
-  //   Object.keys(data[0]).forEach(th => {
-  //      thead += `<th>${th}</th>`
-  //   })
-  //  thead += "<tbody></tbody>"
-  //  table.innerHTML = thead;
-  //  console.log(table)
-  //  document.querySelector('#tabledata')!.innerHTML = table
-
-
-
-  //  doc.html(table, {
-  //   callback: function (doc) {
-  //     doc.save('Document.pdf');
-  //   },
-  //   margin: [0, 60, 60, 0],
-  //   x: 0,
-  //   y: 0,
-  //   width: 100,
-  //   windowWidth: 500 
-  // });
-   
+  }
+  downloadallpdf(data:any){
+    this.pdfservice.pdfallconvert(data)
   }
 
 
