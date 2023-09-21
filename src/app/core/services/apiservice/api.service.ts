@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
+  BehaviorSubject,
   Observable,
   of
 } from 'rxjs';
@@ -10,11 +11,18 @@ import {
 export class ApiService {
   usersUrl: string = 'https://63d0dd9dd5f0fa7fbdbee84f.mockapi.io/users';
 
+  public response:BehaviorSubject<any> = new BehaviorSubject<any>([]); 
+  public data: Observable<[]> = this.response.asObservable();
+
 
   constructor(public http: HttpClient) {}
 
-  getUsers(): Observable<string[]> {
-    return this.http.get<any[]>(this.usersUrl);
+  getUsers()  {
+     this.http.get<any[]>(this.usersUrl).subscribe((res)=>{
+      this.response.next(res.map((item)=>{
+        return item
+      })) 
+    });
   }
   addUser(data: any): Observable<any[]> {
     return this.http.post<any[]>(this.usersUrl, data);
