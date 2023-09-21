@@ -11,8 +11,9 @@ import {
 export class ApiService {
   usersUrl: string = 'https://63d0dd9dd5f0fa7fbdbee84f.mockapi.io/users';
 
-  public response:BehaviorSubject<any> = new BehaviorSubject<any>([]); 
-  public data: Observable<[]> = this.response.asObservable();
+  public response = new BehaviorSubject<any>([]); 
+  
+  public data = this.response.asObservable();
 
 
   constructor(public http: HttpClient) {}

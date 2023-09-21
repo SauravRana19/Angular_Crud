@@ -5,6 +5,9 @@ import { datePickerValidator } from './validations/datepickervalidator';
 import { passwordvalidaator } from './validations/passwordvalidaator';
 import { regex } from 'src/app/shared/service/RegularExpressions/regex';
 import { ApiService } from 'src/app/core/services/apiservice/api.service';
+import { MyErrorStateMatcher } from 'src/app/core/utils/errormatch';
+
+
 
 
 @Component({
@@ -38,6 +41,8 @@ export class DialogComponent implements OnInit {
   maxDate: Date;
   changeBtn: boolean = false;
   loading: boolean = false;
+
+  matcher = new MyErrorStateMatcher ();
 
   profileForm = this.fb.group({
     id: ['', []],

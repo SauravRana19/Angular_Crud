@@ -8,7 +8,7 @@
   <form [formGroup]="profileForm" ngClass="form" (ngSubmit)="register()">
     <mat-form-field appearance="outline">
       <mat-label for="first-name">First Name </mat-label>
-      <input matInput id="Firstname" formControlName="FirstName" />
+      <input matInput id="Firstname" formControlName="FirstName" [errorStateMatcher]="matcher" />
       <mat-error class="alert-danger" *ngIf="
           profileForm?.invalid &&
           profileForm.get('FirstName')?.hasError('required')
@@ -24,7 +24,7 @@
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label for="last-name">Last Name </mat-label>
-      <input matInput id="lastname" type="text" formControlName="LastName" />
+      <input matInput id="lastname" type="text" formControlName="LastName" [errorStateMatcher]="matcher" />
       <mat-error class="alert-danger" *ngIf="
           profileForm?.invalid &&
           profileForm.get('LastName')?.hasError('required')
@@ -40,7 +40,7 @@
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label for="Email">Email</mat-label>
-      <input matInput id="emailAddress" formControlName="Email" />
+      <input matInput id="emailAddress" formControlName="Email" [errorStateMatcher]="matcher" />
       <mat-error class="alert-danger" *ngIf="
           profileForm?.invalid && profileForm.get('Email')?.hasError('required')
         ">
@@ -55,7 +55,7 @@
     <mat-form-field appearance="outline" ngClass="calender">
       <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
       <mat-label> Date of Birth</mat-label>
-      <input matInput [matDatepicker]="picker" [min]="minDate" [max]="maxDate" formControlName="Date" />
+      <input matInput [matDatepicker]="picker" [min]="minDate" [max]="maxDate" formControlName="Date" [errorStateMatcher]="matcher" />
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
       <mat-error class="alert-danger" *ngIf="
@@ -86,7 +86,7 @@
 
     <mat-form-field appearance="outline" ngClass="calender">
       <mat-label for="Password">Password </mat-label>
-      <input matInput id="password" [type]="Phide ? 'password' : 'text'" formControlName="Password" />
+      <input matInput id="password" [type]="Phide ? 'password' : 'text'" formControlName="Password" [errorStateMatcher]="matcher" />
       <button mat-icon-button matSuffix type="button" (click)="Phide = !Phide" [attr.aria-label]="'Hide password'"
         [attr.aria-pressed]="Phide">
         <mat-icon>{{ Phide ? "visibility_off" : "visibility" }}</mat-icon>
@@ -106,7 +106,7 @@
     </mat-form-field>
     <mat-form-field appearance="outline" ngClass="calender">
       <mat-label for="Confirm Password">Confirm Password </mat-label>
-      <input matInput id="confirmpassword" [type]="CPhide ? 'password' : 'text'" formControlName="ConfirmPassword" />
+      <input matInput id="confirmpassword" [type]="CPhide ? 'password' : 'text'" formControlName="ConfirmPassword" [errorStateMatcher]="matcher"/>
       <!-- <span ngClass="GenErr" *ngIf="matchError">
                 Password not matched
             </span> -->
@@ -150,7 +150,7 @@
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label for="last-name">Permanent Address</mat-label>
-      <input matInput id="permanentaddress" type="text" formControlName="PermanentAddress" />
+      <input matInput id="permanentaddress" type="text" formControlName="PermanentAddress" [errorStateMatcher]="matcher"/>
       <mat-error class="alert-danger" *ngIf="
           profileForm?.invalid &&
           profileForm.get('PermanentAddress')?.hasError('required')
@@ -165,7 +165,7 @@
     </div>
     <mat-form-field appearance="outline">
       <mat-label for="Temporary Address">Temporary Address </mat-label>
-      <input matInput id="temporaryaddress" type="text" formControlName="TemporaryAddress" />
+      <input matInput id="temporaryaddress" type="text" formControlName="TemporaryAddress" [errorStateMatcher]="matcher" />
       <mat-error class="alert-danger" *ngIf="
           profileForm?.invalid &&
           profileForm.get('TemporaryAddress')?.hasError('required')
@@ -175,7 +175,7 @@
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label for="last-name">Postal code </mat-label>
-      <input matInput id="postalcode" type="number" formControlName="Postalcode" (keypress)="presskey($event)" />
+      <input matInput id="postalcode" type="number" formControlName="Postalcode" (keypress)="presskey($event)" [errorStateMatcher]="matcher" />
       <mat-error class="alert-danger" *ngIf="
           profileForm?.invalid &&
           profileForm.get('Postalcode')?.hasError('required')
