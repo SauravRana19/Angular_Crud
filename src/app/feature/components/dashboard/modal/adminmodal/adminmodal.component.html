@@ -56,7 +56,6 @@
             Password Invalid
         </mat-error>
     </mat-form-field>
-
     <div formArrayName='address'>
         <div *ngFor="let addres of address().controls; let i=index">
             <div  [formGroupName]="i">
@@ -64,8 +63,8 @@
                     <mat-label for="city">City</mat-label>
                     <input matInput  type="text" formControlName="city" [errorStateMatcher]="matcher" />
                     <mat-error class="alert-danger" *ngIf="
-                     adminform?.invalid &&
-                     adminform.get('address.city')?.hasError('required')
+                     addres.invalid &&
+                     addres.get('city')?.hasError('required')
                   ">
                         Required
                     </mat-error>
