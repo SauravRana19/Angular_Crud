@@ -16,10 +16,13 @@
   <button mat-raised-button color="success" (click)=" editUser($event)">Add Employee</button>
   &nbsp;&nbsp;
 
+  <button mat-raised-button color="success" (click)=" addAdmin($event)">Add Admin</button>
+  &nbsp;&nbsp;
+
   <button mat-raised-button color="success" (click)="downloadcsv(this.dataSource.data)">Download all CSV</button>
   &nbsp;&nbsp;
-  <button mat-raised-button color="success" (click)="downloadpdf(this.dataSource.data)">Download all PDF</button>
-  &nbsp;&nbsp;
+  <!-- <button mat-raised-button color="success" (click)="downloadpdf(this.dataSource.data)">Download all PDF</button>
+  &nbsp;&nbsp; -->
   <button mat-raised-button color="warn" (click)="rtoken()">Logout</button>
 
 </mat-toolbar>

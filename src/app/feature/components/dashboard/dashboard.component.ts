@@ -17,6 +17,8 @@ import { ApiService } from 'src/app/core/services/apiservice/api.service';
 import { LoaderService } from 'src/app/core/services/loderservice/loader.service';
 import { CsvService } from 'src/app/core/services/csvservice/csv.service';
 import { PdfService } from 'src/app/core/services/pdfservice/pdf.service';
+import { AdminmodalComponent } from './modal/adminmodal/adminmodal.component';
+
 // import { jsPDF } from 'jspdf';
 // import autoTable from 'jspdf-autotable'
 
@@ -46,6 +48,8 @@ export interface Users {
 export class DashboardComponent implements OnInit {
   Dialog: MatDialogRef<DialogComponent> | undefined;
   studentdialog:MatDialogRef<StepperComponent> | undefined;
+  admindialog:MatDialogRef<AdminmodalComponent> | undefined;
+
 
   constructor(
     private _router: Router,
@@ -104,6 +108,16 @@ export class DashboardComponent implements OnInit {
       this.dataSource.data = res
       console.log(res)
     })
+  }
+  addAdmin(data:any){
+    console.log(data)
+    this.admindialog = this.dialogModel.open(AdminmodalComponent, {
+      height: '100%',
+      width: '60%',
+      enterAnimationDuration: '500ms',
+      exitAnimationDuration: '200ms',
+      disableClose: true,
+    });
   }
 
   deletUser(id: number) {

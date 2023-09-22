@@ -31,6 +31,7 @@ import { AddressComponent } from './components/stepper/stepper/stepperforms/addr
 import { UserinfoComponent } from './components/stepper/stepper/stepperforms/userinfo/userinfo.component';
 import { BasicinfoComponent } from './components/stepper/stepper/stepperforms/basicinfo/basicinfo.component';
 import { ApiService } from '../core/services/apiservice/api.service';
+import { AdminmodalComponent } from './components/dashboard/modal/adminmodal/adminmodal.component';
 // import { CsvService } from '../core/services/csvservice/csv.service';
 // import { PdfService } from '../core/services/pdfservice/pdf.service';
 
@@ -47,6 +48,7 @@ import { ApiService } from '../core/services/apiservice/api.service';
     AddressComponent,
     UserinfoComponent,
     BasicinfoComponent,
+    AdminmodalComponent,
   ],
   imports: [
     CommonModule,
