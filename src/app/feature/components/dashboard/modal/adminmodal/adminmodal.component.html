@@ -60,11 +60,11 @@
         <div *ngFor="let addres of address().controls; let i=index">
             <div  [formGroupName]="i">
                 <mat-form-field appearance="outline">
-                    <mat-label for="city">City</mat-label>
-                    <input matInput  type="text" formControlName="city" [errorStateMatcher]="matcher" />
+                    <mat-label for="address">address</mat-label>
+                    <input matInput  type="text" formControlName="address" [errorStateMatcher]="matcher" />
                     <mat-error class="alert-danger" *ngIf="
                      addres.invalid &&
-                     addres.get('city')?.hasError('required')
+                     addres.get('address')?.hasError('required')
                   ">
                         Required
                     </mat-error>
@@ -73,6 +73,10 @@
             </div>
         </div>
     </div>
-    <button mat-raised-button color="primary" class="btn" type="button" (click)="createItem()">add address</button>
-
+    <button mat-raised-button color="primary" class="btn" type="button" (click)="createItem()">add Temporary address</button>
+    <div>
+        <button class="example-button-row submit" [disabled]="adminform.invalid" type="submit" mat-flat-button>
+         Submit
+        </button>
+      </div>
 </form>

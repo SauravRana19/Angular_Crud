@@ -17,11 +17,9 @@ export class AdminmodalComponent implements OnInit {
     matcher = new MyErrorStateMatcher ();
     Phide: boolean = true;
     
-    adminform!:FormGroup;
+    // adminform!:FormGroup;
 
-
-  ngOnInit(): void {
-    this.adminform = this.fb.group({
+   adminform = this.fb.group({
       name:['', [Validators.required, Validators.pattern(regex.name)]],
       email:['',[  Validators.required, Validators.email, Validators.pattern(regex.email),],],
       password:['',[Validators.required,Validators.pattern(regex.password),],],
@@ -29,29 +27,22 @@ export class AdminmodalComponent implements OnInit {
       address: this.fb.array([],[Validators.required])
    
     })
+  ngOnInit(): void {
+  
     this.createItem() 
   }
   register(){
-
+console.log(this.adminform.value)
   }
    address():FormArray {
    return this.adminform.get('address') as FormArray
   }
-  address_controls(){
-    return this.fb.group({
-      city:['',[Validators.required]]
-    })
-  }
 
   createItem() {
-   this.address().push(this.address_controls())
+   this.address().push(this.fb.group({
+      address:['',[Validators.required]]
+    }))
   }
 
-  addItem() {
-    const phone = this.fb.group({
-      city: ['', [Validators.required]],
-    })
-    // this.address.push(phone);
-  }
 
-}
+  }
