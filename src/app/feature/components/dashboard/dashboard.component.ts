@@ -106,7 +106,7 @@ export class DashboardComponent implements OnInit {
     this.apiservice.getUsers();
     this.apiservice.data.subscribe((res)=>{
       this.dataSource.data = res
-      console.log(res)
+      // console.log(res)
     })
   }
   addAdmin(data:any){

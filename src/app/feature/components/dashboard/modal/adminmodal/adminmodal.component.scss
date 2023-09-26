@@ -5,12 +5,14 @@
     float: right;
     margin: -100px 0 0 0;
   }
-  .form {
-    padding: 0 0 0 10%;
-  }
-  .mat-form-field {
-    margin: 0 0 0 11%;
-  }
+  // .form {
+  //   position: relative;
+  //   padding: 0 0 0 10%;
+  // }
+  // .mat-form-field {
+  //   margin: 0 0 0 11%;
+  // }
+
   .headertext{
     padding: 0 0 6% 35%;
     font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -20,8 +22,7 @@
   }
   .btn{
     width: max-content;
-    margin: 0 0 0 11%;
-    
+    margin: 0 0 0 7%;
   }
   .submit{
     background-color: green;
@@ -29,3 +30,21 @@
     width: 50%;
     margin: 10% 20%;
   }
+  .form-control{
+    width: 20%;
+    margin: 0 0 0 10%;
+    height: 20px;
+  }
+  .formfielderror{
+    margin: 0 0 0 7%;
+    display: inline-block;
+    position: relative;
+  }
+  .fielderror{
+    margin: -10% 0% 0% 2%;
+    position: absolute;
+    font-weight: 400;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 11px;
+  }
+ 

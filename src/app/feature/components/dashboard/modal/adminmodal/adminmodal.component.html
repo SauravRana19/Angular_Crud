@@ -3,80 +3,85 @@
     X
 </button>
 <form [formGroup]="adminform" ngClass="form" (ngSubmit)="register()">
-    <mat-form-field appearance="outline">
-        <mat-label for="FullName">FullName </mat-label>
-        <input matInput id="FullName" formControlName="name" [errorStateMatcher]="matcher" />
-        <mat-error class="alert-danger" *ngIf="
-        adminform?.invalid &&
-        adminform.get('name')?.hasError('required')
-          ">
-            Required
-        </mat-error>
-        <mat-error class="alert-danger" *ngIf="
-        adminform?.invalid &&
-        adminform.get('name')?.hasError('pattern')
-          ">
-            First Name Invalid
-        </mat-error>
-    </mat-form-field>
+    <div ngClass="formfielderror">
+        <mat-form-field appearance="outline">
+            <mat-label for="FullName">FullName </mat-label>
+            <input matInput id="FullName" formControlName="name" />
 
-    <mat-form-field appearance="outline">
-        <mat-label for="email">Email</mat-label>
-        <input matInput id="email" formControlName="email" [errorStateMatcher]="matcher" />
-        <mat-error class="alert-danger" *ngIf="
-            adminform?.invalid && adminform.get('email')?.hasError('required')
-          ">
-            Required
+        </mat-form-field>
+        <mat-error ngClass="fielderror"
+            *ngIf="adminform.controls.name.invalid && (adminform.controls.name.dirty || adminform.controls.name.touched)">
+            <mat-error class="alert-danger" *ngIf="adminform.controls.name.errors?.['required']">
+                Required
+            </mat-error>
+            <mat-error class="alert-danger" *ngIf="adminform.controls.name.errors?.['pattern']">
+                First Name Invalid
+            </mat-error>
         </mat-error>
-        <mat-error class="alert-danger" *ngIf="
-            adminform?.invalid && adminform.get('email')?.hasError('pattern')
-          ">
-            Email Invalid
+    </div>
+    <div ngClass="formfielderror">
+        <mat-form-field appearance="outline">
+            <mat-label for="email">Email</mat-label>
+            <input matInput id="email" formControlName="email" />
+        </mat-form-field>
+        <mat-error ngClass="fielderror"
+            *ngIf="adminform.controls.email.invalid && (adminform.controls.email.dirty || adminform.controls.email.touched)">
+            <mat-error class="alert-danger" *ngIf="adminform.controls.email.errors?.['required']">
+                Required
+            </mat-error>
+            <mat-error class="alert-danger" *ngIf="adminform.controls.email.errors?.['pattern']">
+                Email Invalid
+            </mat-error>
         </mat-error>
-    </mat-form-field>
-
-    <mat-form-field appearance="outline" ngClass="password">
-        <mat-label for="password">Password </mat-label>
-        <input matInput id="password" [type]="Phide ? 'password' : 'text'" formControlName="password"
-            [errorStateMatcher]="matcher" />
-        <button mat-icon-button matSuffix type="button" (click)="Phide = !Phide" [attr.aria-label]="'Hide password'"
-            [attr.aria-pressed]="Phide">
-            <mat-icon>{{ Phide ? "visibility_off" : "visibility" }}</mat-icon>
-        </button>
-        <mat-error class="alert-danger" *ngIf="
-            adminform?.invalid &&
-            adminform.get('password')?.hasError('required')
-          ">
-            Required
+    </div>
+    <div ngClass="formfielderror">
+        <mat-form-field appearance="outline">
+            <mat-label for="password">Password </mat-label>
+            <input matInput id="password" [type]="Phide ? 'password' : 'text'" formControlName="password"
+                [errorStateMatcher]="matcher" />
+            <button mat-icon-button matSuffix type="button" (click)="Phide = !Phide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="Phide">
+                <mat-icon>{{ Phide ? "visibility_off" : "visibility" }}</mat-icon>
+            </button>
+        </mat-form-field>
+        <mat-error ngClass="fielderror"
+            *ngIf="adminform.controls.password.invalid && (adminform.controls.password.dirty || adminform.controls.password.touched)">
+            <mat-error class="alert-danger" *ngIf="adminform.controls.password.errors?.['required']">
+                Required
+            </mat-error>
+            <mat-error class="alert-danger" *ngIf="adminform.controls.password.errors?.['pattern']">
+                Password Invalid
+            </mat-error>
         </mat-error>
-        <mat-error class="alert-danger" *ngIf="
-            adminform?.invalid &&
-            adminform.get('password')?.hasError('pattern')
-          ">
-            Password Invalid
-        </mat-error>
-    </mat-form-field>
+    </div>
     <div formArrayName='address'>
         <div *ngFor="let addres of address().controls; let i=index">
-            <div  [formGroupName]="i">
-                <mat-form-field appearance="outline">
-                    <mat-label for="address">address</mat-label>
-                    <input matInput  type="text" formControlName="address" [errorStateMatcher]="matcher" />
-                    <mat-error class="alert-danger" *ngIf="
-                     addres.invalid &&
-                     addres.get('address')?.hasError('required')
-                  ">
-                        Required
-                    </mat-error>
-                </mat-form-field>
+            <div [formGroupName]="i">
+                <div ngClass="formfielderror">
+                    <mat-form-field appearance="outline">
+                        <mat-label for="address">address</mat-label>
+                        <input matInput type="text" formControlName="address" />
+                    </mat-form-field>
+                    <mat-error ngClass="fielderror"
+                        *ngIf="address().controls[i].get('address')!.invalid && (address().controls[i].get('address')!.dirty || address().controls[i].get('address')!.touched)">
 
+                        <mat-error class="alert-danger"
+                            *ngIf="address().controls[i].get('address')!.errors?.['required']">
+                            Required
+                        </mat-error>
+                    </mat-error>
+                </div>
             </div>
         </div>
+        <button mat-raised-button color="primary" ngClass="formfielderror" type="button" (click)="createItem()">add
+            Temporary
+            address
+        </button>
     </div>
-    <button mat-raised-button color="primary" class="btn" type="button" (click)="createItem()">add Temporary address</button>
+
     <div>
         <button class="example-button-row submit" [disabled]="adminform.invalid" type="submit" mat-flat-button>
-         Submit
+            Submit
         </button>
-      </div>
+    </div>
 </form>
